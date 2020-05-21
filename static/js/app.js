@@ -21,23 +21,32 @@ function buildTable(data){
     });
 }
 
-function handleClick() {
-    // Grab datetime value from filter.
-    let date = d3.select("#datetime").property("value");
+var filters = {};
+function updateFilters(){
+    var changedElement = d3.select(this).select("input");
+    var elementValue = changedElement.property("value");
+    var filterId = changedElement.attr("id")
+
+    if (elementValue) {
+        filters[filterId] = elementValue;
+    }
+    else {
+        delete filters[filterId];
+    }
+    filterTable();
+}
+
+function filterTable() {
     let filteredData = tableData;
 
-    // Apply 'filter' to table data to keep only rows 
-    //with 'datetime' matches the filter value
-    if (date) {
-        filteredData = filteredData.filter(row => row.datetime === date);
+    Object.defineProperties(filters).forEach(([key, value]) => {
+        filteredData = filteredData.filter(row=> row[key] === value)});
+
+    buildTable(filteredData)
     };
-    // Rebuild the table using the filtered data
-  // @NOTE: If no date was entered, then filteredData will
-  // just be the original tableData.
-  buildTable(filteredData);
-}
+
 // Attach an event to listen for the form button
-d3.selectAll("#filter-btn").on("click", handleClick);
+d3.selectAll(".filter").on("change", updateFilters);
 
 // Build the table when the page loads
 buildTable(tableData);

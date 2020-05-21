@@ -40,16 +40,27 @@
                 <div class="col-md-3">
                     <form>
                         <p>Filter Search</p>
-                        <ul>
-                          <li>
-                            <label for="date">Enter Date</label>
-                            <input type="text" placeholder="1/10/2010" id="datetime" />
-                          </li>
-                          <li>
-                             <button id="filter-btn" type="button" class="btn btn-default">
-                               Filter Table
-                             </button>
-                          </li>
+                        <ul class="list-group" id="filters">
+                            <li class="filter list-group-item">
+                                <label for="date" style="color:black">Enter Date</label>
+                                <input type="text" placeholder="1/10/2010" id="datetime" />
+                            </li>
+                            <li class="filter list-group-item">
+                                <label for="city" style="color:black">Enter City</label>
+                                <input type="text" placeholder="el cajon" id="city" />
+                            </li>
+                            <li class="filter list-group-item">
+                                <label for="state" style="color:black">Enter State</label>
+                                <input type="text" placeholder="ca" id="state" />
+                            </li>
+                            <li class="filter list-group-item">
+                                <label for="country" style="color:black">Enter Country</label>
+                                <input type="text" placeholder="US" id="country" />
+                            </li>
+                            <li class="filter list-group-item">
+                                <label for="shape" style="color:black">Enter Shape</label>
+                                <input type="text" placeholder="triangle" id="shape" />
+                            </li>
                         </ul>
                        </form>
                 </div>
@@ -66,10 +77,11 @@
                             <th>Comments</th>
                             </tr>
                         </thead>
+                        <tbody></tbody>
                     </table>    
                 </div>
             </div>
-          </div>
+        </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
     <script src="static/js/data.js"></script>
