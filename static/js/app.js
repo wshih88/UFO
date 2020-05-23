@@ -3,7 +3,7 @@ const tableData = data;
 // Reference the HTML table using d3
 var tbody = d3.select("tbody");
 
-function buildTable(data){
+function buildTable(data) {
     // Clearing out any pre-existing data.
     tbody.html("");
     // Looping through each object in the data.
@@ -22,7 +22,8 @@ function buildTable(data){
 }
 
 var filters = {};
-function updateFilters(){
+function updateFilters() {
+    console.log('filtering')
     var changedElement = d3.select(this).select("input");
     var elementValue = changedElement.property("value");
     var filterId = changedElement.attr("id")
@@ -39,12 +40,12 @@ function updateFilters(){
 function filterTable() {
     let filteredData = tableData;
 
-    Object.defineProperties(filters).forEach(([key, value]) => {
-        filteredData = filteredData.filter(row=> row[key] === value)});
+    Object.entries(filters).forEach(([key, value]) => {
+        filteredData = filteredData.filter(row => row[key] === value)
+    });
 
     buildTable(filteredData)
-    };
-
+};
 // Attach an event to listen for the form button
 d3.selectAll(".filter").on("change", updateFilters);
 
