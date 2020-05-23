@@ -1,8 +1,8 @@
-psuedoCode.js
-starterCode.js
-practice.js
-app_module.js
-test.js
+./static/js/psuedoCode.js
+./static/js/starterCode.js
+./static/js/practice.js
+./static/js/app_module.js
+./static/js/test.js
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
